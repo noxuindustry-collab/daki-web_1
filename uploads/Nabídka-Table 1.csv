@@ -1,0 +1,32 @@
+DAKI — NABÍDKA · data pro web (zdroj: Foodora);;;;
+Vyplněno: kategorie, nazev_jidla, popis. Žlutě zvýrazněné sloupce doplň ty: obrazek_soubor (přesný název souboru vč. přípony) a cena. Popisy klidně uprav.;;;;
+z Foodory (Předkrmy / PHOlévky / Hlavní jídla);z Foodory;DOPLŇ TY — přesný název souboru ve tvé složce (vč. .jpg/.png);DOPLŇ TY — ceny pro web;z Foodory (uprav dle potřeby)
+kategorie;nazev_jidla;obrazek_soubor;cena;popis
+Předkrmy;Smažené jarní závitky s masem;;99;Křupavé smažené závitky.
+Předkrmy;Smažené jarní závitky s krevetami a vepřovým masem;;115;Křupavé smažené závitky.
+Předkrmy;Veganské smažené závitky;;99;Křupavé smažené závitky plněné zeleninou podávané se sladkokyselou omáčkou. 3 ks.
+Předkrmy;Smažené trojhránky s mořskými plody;;80;Křupavé smažené trojhránky plněné směsí mořských plodů.
+Předkrmy;Krevetové knedlíčky Ha Cao;;99;Knedlíčky plněné krevetami vařené na páře.
+Předkrmy;Letní závitky s grilovaným masem;;119;Hanojský styl letní závitků z grilovaného masa, salátu, bylinek. Podávané se sladkokyselou omáčkou.
+Předkrmy;Letní závitky s krevetami;;119;Rýžový papír, krevety, salát, bylinky, rýžové nudle, sladkokyselá omáčka. 3ks
+PHOlévky;Pho s rýžovými nudlemi a kuřecím masem;;169;Tradiční vietnamská polévka s kuřecím masem, rýžovými nudlemi, bylinkami a silným vývarem.
+PHOlévky;Pho s hovězím masem;;179;Tradiční vietnamská polévka s hovězím masem, rýžovými nudlemi, bylinkami a silným vývarem.
+PHOlévky;Pho Sot Vang s hovězím;;179;Vietnamská polévka s hovězím masem na víně s rýžovými nudlemi, bylinkami a výrazným vývarem.
+Hlavní jídla;Kari s křupavým kuřecím masem a rýží;;159;Kari s křupavým kuřecím masem, zeleninou a rýží.
+Hlavní jídla;Bun Bo Nam Bo;;179;Rýžové nudle s hovězím masem, čerstvou zeleninou, bylinkami, arašídy a vietnamskou omáčkou.
+Hlavní jídla;Bun Cha s vepřovým masem a rýžovými nudlemi;;179;Bun cha podávaný s vepřovým masem a rýžovými nudlemi, zeleninou a vietnamskou omáčkou.
+Hlavní jídla;Letní kuřecí salát;;145;Osvěžující letní salát s kuřecím masem, čerstvou zeleninou a voňavými bylinkami.
+Hlavní jídla;Rýžové nudle se smaženými závitky s vepřovým masem;;155;Rýžové nudle se smaženými závitky, zeleninou a vietnamskou omáčkou.
+Hlavní jídla;Rýžové nudle se smaženými závitky s krevetami;;169;Rýžové nudle se smaženými závitky, zeleninou a vietnamskou omáčkou.
+Hlavní jídla;Rýžové nudle se smaženými veganskými závitky;;155;Rýžové nudle s veganskými smaženými závitky, zeleninou a veganskou omáčkou.
+Hlavní jídla;Smažená rýže s masem;;150;Smažená rýže s masem, zeleninou a jemným dochucením.
+Hlavní jídla;Smažené rýžové nudle s masem;;150;Smažené rýžové nudle s masem a zeleninou.
+Hlavní jídla;Smažené nudle s masem;;150;Smažené nudle s masem a zeleninou v jemné omáčce.
+Hlavní jídla;Pho Xào s masem;;169;Ploché rýžové nudle, maso dle výběru, zelenina, omáčka.
+Hlavní jídla;Pekingská kachna s rýží;;229;Křupavá pekingská kachna podávaná s kokosovou omáčkou, rýží a čerstvou zeleninou.
+Hlavní jídla;Vepřová krkovice ve sladkokyselé omáčce s rýží;;169;Vepřová krkovice ve sladkokyselé omáčce podávaná s rýží.
+Hlavní jídla;Thit kho tau s vepřovým masem;;169;Dušené vepřové maso, vejce, karamelová omáčka, kokosová voda, jasmínová rýže.
+Hlavní jídla;Thit kho tau s kuřecím masem;;169;Kuřecí maso, vejce, karamelová omáčka, kokosová voda, jasmínová rýže.
+Hlavní jídla;Bun Cha La Lot;;169;Mleté vepřové maso v listech betelu, rýžové nudle, bylinky. Podávané se sladkokyselou omáčkou.
+Hlavní jídla;Smažené trojhránky s mořskými plody a hranolky;;125;Křupavé smažené trojhránky s mořskými plody podávané s hranolky.
+Hlavní jídla;Smažený sýr s hranolky;;125;Klasický smažený sýr podávaný s hranolky.

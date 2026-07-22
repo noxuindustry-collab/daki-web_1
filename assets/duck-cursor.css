@@ -1,0 +1,6 @@
+/* Duck cursor — sdílené pravidlo pro obě stránky (homepage + Nabídka).
+   Hotspot 16 16 = střed kachny; fallback PNG (Safari) → pointer. */
+a, button, [role="button"], .clickable, [onclick], summary, select,
+input[type="button"], input[type="submit"], label[for] {
+  cursor: url('duck-cursor.svg') 16 16, url('duck-cursor.png') 16 16, pointer !important;
+}

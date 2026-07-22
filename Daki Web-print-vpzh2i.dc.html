@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Cherry Bomb One';src:url('assets/CherryBombOne-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('assets/Montserrat-VariableFont.ttf') format('truetype');font-weight:100 900;font-display:swap}
+body{margin:0;background:#fef7e5;font-family:Montserrat,system-ui,sans-serif;color:#5c2517}
+a{color:#873924}a:hover{color:#a5523a}
+::selection{background:#f0ce7a;color:#5c2517}
+#ig-grid>div{aspect-ratio:1;width:100%}
+@keyframes rv-in{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+  [data-rv]{animation:rv-in .8s cubic-bezier(.22,1,.36,1) both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+@media (prefers-reduced-motion:reduce){[data-rv]{animation:none}}
+</style>
+</helmet>
+
+<a href="#obsah" style="position:absolute;left:16px;top:-48px;z-index:100;background:#873924;color:#fef7e5;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none" style-focus="top:12px">Přeskočit na obsah</a>
+
+<header data-screen-label="Navigace" style="position:sticky;top:0;z-index:50;background:#fef7e5;border-bottom:1px solid #f5e8c8;box-shadow:0 2px 12px rgba(92,37,23,.06)">
+  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:14px 24px">
+    <a href="#" aria-label="Daki — domů" style="display:flex;flex:none"><img src="assets/logo-red.svg" alt="Daki" width="104" height="45" style="display:block;height:44px;width:auto"></a>
+    <nav aria-label="Hlavní navigace" style="display:flex;gap:26px;font-size:14px;font-weight:600">
+      <a href="#o-nas" style="text-decoration:none;color:#873924;border-bottom:3px solid #e3b555;padding:4px 0">O nás</a>
+      <a href="#nabidka" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a">Nabídka</a>
+      <a href="#kontakt" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a">Kontakt</a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+      <div role="group" aria-label="Jazyk" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
+        <span style="padding:6px 12px;background:#873924;color:#fef7e5;cursor:pointer">CZ</span>
+        <span style="padding:6px 12px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</span>
+      </div>
+      <a href="https://www.foodora.cz" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:9px 18px;background:#d3155e;color:#fff;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.3px;text-decoration:none" style-hover="background:#b81252;color:#fff">foodora</a>
+      <a href="#nabidka" style="display:inline-flex;align-items:center;padding:9px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5">MENU</a>
+    </div>
+  </div>
+</header>
+
+<main id="obsah">
+<section data-screen-label="Hero" style="position:relative;background:#faf1da">
+  <div style="position:relative;max-width:100%;overflow:hidden">
+    <img src="assets/hero.png" alt="Tác plný jídel bistra Daki — bun bo, pho, závitky a katsu kari" width="1440" height="816" fetchpriority="high" style="display:block;width:100%;height:auto;min-height:420px;object-fit:cover">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:56px 24px 0;text-align:center">
+      <p data-rv="" style="margin:0 0 10px;font-size:14px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#a5523a">Rodinné vietnamské bistro · Karviná</p>
+      <h1 data-rv="" style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(38px,5.5vw,72px);line-height:1.05;color:#873924;text-wrap:balance">Autentická, asijská<br>kuchyně</h1>
+    </div>
+    <div data-rv="" style="position:absolute;left:0;right:0;bottom:36px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+      <a href="#nabidka" style="display:inline-flex;align-items:center;padding:14px 30px;background:#873924;color:#fef7e5;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(92,37,23,.28);transition:background .2s,transform .18s" style-hover="background:#5c2517;color:#fef7e5;transform:translateY(-3px)">Podívat se na nabídku</a>
+      <a href="https://www.foodora.cz" style="display:inline-flex;align-items:center;padding:14px 30px;background:#fef7e5;color:#873924;border:2px solid #873924;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s,transform .18s" style-hover="background:#f5e8c8;transform:translateY(-3px)">Objednat na Foodora</a>
+    </div>
+  </div>
+</section>
+
+<section id="o-nas" data-screen-label="O nás" style="background:#873924;color:#fef7e5">
+  <div style="max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; padding: 72px 24px; position: relative">
+    <div data-rv="">
+      <h2 style="margin:0 0 22px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.1;color:#fef7e5">Něco málo<br>o Daki</h2>
+      <p style="margin:0;font-size:15.5px;line-height:1.75;color:#f5e8c8;text-wrap:pretty"><strong style="color:#f0ce7a">DAKI</strong> je rodinné bistro. Naši rodiče Hanh a Vinh prodávali celý život oblečení — ale jejich srdce vždycky patřilo kuchyni. Vařit pro děti pro ně bylo způsobem, jak po dlouhém dni říct „mám vás rád“ — a zároveň si přivolat kousek domova z Vietnamu. Po letech si splnili sen a otevřeli si místo, kde vaří stejně jako svým dětem: s láskou, trpělivostí a roky zkušeností v každém jídle. A dnes stejně vaří i pro vás.</p>
+    </div>
+    <div style="display: flex; gap: 18px; justify-content: center; align-items: center">
+      <img data-rv="" src="assets/pho-xao.png" alt="Pho xao s vepřovým masem na stole bistra" width="500" height="620" loading="lazy" style="flex:1;min-width:0;width:auto;height:320px;object-fit:cover;border-radius:20px;display:block">
+      <img data-rv="" src="assets/kachna-1.png" alt="Pekingská kachna s rýží a zeleninou" width="500" height="620" loading="lazy" style="flex:1;min-width:0;width:auto;height:320px;object-fit:cover;border-radius:20px;display:block">
+    </div></div>
+</section>
+
+<section id="nabidka" data-screen-label="Polední akce" style="background:#fef7e5;scroll-margin-top:90px">
+  
+<div style="max-width:1140px;margin:0 auto;padding:76px 24px 70px;display:flex;flex-direction:column;align-items:center;gap:12px">
+    <h2 data-rv="" style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(30px,3.4vw,44px);color:#873924;text-align:center">Polední akce</h2>
+    <p data-rv="" style="margin:0 0 30px;font-size:15px;color:#5c2517;text-align:center">Od <strong>10–14&nbsp;hodin</strong> k vybranému jídlu dostanete i polévku zdarma.</p>
+    <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 26px; width: 100%; position: relative">
+      <article data-rv="" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+        <img src="assets/nb-smazene-nudle.png" alt="Smažené nudle s kuřecím masem" width="600" height="600" loading="lazy" style="width:100%;height:auto;max-width:290px;aspect-ratio:1;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(92,37,23,.18));transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05) rotate(-2deg)">
+        <h3 style="margin:0;font-size:16.5px;font-weight:700;color:#5c2517">Smažené nudle s kuřecím masem</h3>
+        <span style="display:inline-block;background:#873924;color:#fef7e5;font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px">150&nbsp;Kč</span>
+      </article>
+      <article data-rv="" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+        <img src="assets/nb-smazena-ryze.png" alt="Smažená rýže s kuřecím masem" width="600" height="600" loading="lazy" style="width:100%;height:auto;max-width:290px;aspect-ratio:1;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(92,37,23,.18));transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05) rotate(-2deg)">
+        <h3 style="margin:0;font-size:16.5px;font-weight:700;color:#5c2517">Smažená rýže s kuřecím masem</h3>
+        <span style="display:inline-block;background:#873924;color:#fef7e5;font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px">150&nbsp;Kč</span>
+      </article>
+      <article data-rv="" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+        <img src="assets/nb-veprove-sladkokysele.png" alt="Vepřové maso ve sladkokyselé omáčce s rýží" width="600" height="600" loading="lazy" style="width:100%;height:auto;max-width:290px;aspect-ratio:1;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(92,37,23,.18));transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05) rotate(-2deg)">
+        <h3 style="margin:0;font-size:16.5px;font-weight:700;color:#5c2517">Vepřové maso ve sladkokyselé omáčce</h3>
+        <span style="display:inline-block;background:#873924;color:#fef7e5;font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px">169&nbsp;Kč</span>
+      </article>
+      <article data-rv="" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+        <img src="assets/nb-smazene-ryz-nudle.png" alt="Smažené rýžové nudle s kuřecím masem" width="600" height="600" loading="lazy" style="width:100%;height:auto;max-width:290px;aspect-ratio:1;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(92,37,23,.18));transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05) rotate(-2deg)">
+        <h3 style="margin:0;font-size:16.5px;font-weight:700;color:#5c2517">Smažené rýžové nudle s kuřecím masem</h3>
+        <span style="display:inline-block;background:#873924;color:#fef7e5;font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px">150&nbsp;Kč</span>
+      </article></div>
+    <a data-rv="" href="#" style="margin-top:38px;display:inline-flex;align-items:center;padding:14px 32px;background:#e3b555;color:#5c2517;border-radius:999px;font-size:15px;font-weight:800;letter-spacing:.4px;text-decoration:none;transition:background .2s,transform .18s" style-hover="background:#f0ce7a;color:#5c2517;transform:translateY(-3px)">Podívat se na celou nabídku</a>
+  </div></section>
+
+<section id="kontakt" data-screen-label="Kde nás najdete" style="background:#f5e8c8;scroll-margin-top:90px">
+  <div style="max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; align-items: flex-start; padding: 64px 24px">
+    <div data-rv="" style="position:relative;background:#fef7e5;border:2px solid #e3b555;border-radius:20px;overflow:hidden;height:340px">
+      <iframe src="https://maps.google.com/maps?q=Fry%C5%A1t%C3%A1tsk%C3%A1%20151%2F15%2C%20Karvin%C3%A1&amp;z=16&amp;output=embed" title="Mapa — Daki, Fryštátská 151/15, Karviná" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:100%;display:block"></iframe>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Fry%C5%A1t%C3%A1tsk%C3%A1+151%2F15%2C+Karvin%C3%A1" target="_blank" rel="noopener" style="position:absolute;left:14px;bottom:14px;display:inline-flex;padding:10px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(92,37,23,.3)" style-hover="background:#5c2517;color:#fef7e5">Navigovat v Google Mapách</a>
+    </div>
+    <div data-rv="" style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(28px,3vw,40px);color:#873924">Kde nás najdete</h2>
+      <p style="margin:0;font-size:15px;line-height:1.7">Fryštátská 151/15, Fryštát<br>733 01 Karviná 1</p>
+      <a href="tel:+420770404074" style="font-size:17px;font-weight:800;color:#873924;text-decoration:none" style-hover="color:#a5523a">+420 770 404 074</a>
+      <div style="display:flex;gap:26px;font-size:14.5px">
+        <div><strong>Po–Pá</strong><br>10:00 – 18:00</div>
+        <div><strong>Ne</strong><br>11:00 – 19:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;background:#5c2517;overflow:hidden">
+  <img src="assets/cta.png" alt="" aria-hidden="true" width="1440" height="641" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:100px 24px">
+    <h2 data-rv="" style="margin:0 0 34px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(44px,5.2vw,72px);line-height:1.18;color:#fef7e5;max-width:640px">Máš hlad?<br><span style="color:#e3b555">Přijď ochutnat</span><br>naše jídlo!</h2>
+    <a data-rv="" href="#kontakt" style="display:inline-flex;padding:16px 38px;background:#fff;color:#5c2517;border-radius:12px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .18s" style-hover="background:#f5e8c8;transform:translateY(-3px)">Kontakt</a>
+  </div>
+</section>
+
+<sc-if value="{{ showInstagram }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Instagram" style="background:#fef7e5">
+  <div style="max-width:1140px;margin:0 auto;padding:72px 24px">
+    <div data-rv="" style="display:flex;align-items:center;gap:18px;margin-bottom:30px">
+      <h2 style="margin:0;flex:1;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(26px,3vw,40px);color:#873924">Sleduj náš příběh na <a href="https://www.instagram.com/daki.food/" style="color:#a5523a;text-decoration:none" style-hover="color:#873924">Instagramu</a></h2>
+      <a href="https://www.instagram.com/daki.food/" aria-label="Instagram Daki" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#f5e8c8">IG</a>
+      <a href="#" aria-label="Facebook Daki" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#f5e8c8">FB</a>
+    </div>
+    <sc-if value="{{ hasFeed }}" hint-placeholder-val="{{ false }}">
+    <div data-rv="" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px">
+      <sc-for list="{{ igPosts }}" as="post" hint-placeholder-count="8">
+        <a href="{{ post.link }}" target="_blank" rel="noopener" aria-label="Post na Instagramu" style="display:block;aspect-ratio:1;border-radius:16px;overflow:hidden"><img src="{{ post.img }}" alt="{{ post.caption }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)"></a>
+      </sc-for>
+    </div>
+    </sc-if>
+    <div id="ig-grid" data-rv="" style="display:{{ dropGridDisplay }};grid-template-columns:repeat(4,minmax(0,1fr));gap:14px">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-1" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-2" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-3" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-4" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-5" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-6" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-7" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ig-post-8" shape="rounded" radius="16" placeholder="Post z @daki.food" style="width:100%;aspect-ratio:1" hint-size="100%,260px"></x-import>
+    </div>
+  </div>
+</section>
+</sc-if>
+</main>
+
+<footer data-screen-label="Patička" style="background:#fef7e5;border-top:2px solid #f5e8c8">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:52px 24px 36px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <img src="assets/logo-red.svg" alt="Daki" width="160" height="69" style="width:160px;height:auto;display:block">
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#a5523a;max-width:300px">Autentická vietnamská kuchyně v srdci Karviné.<br>Rodinný recept, moderní podání.</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://www.instagram.com/daki.food/" aria-label="Instagram Daki" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:12px" style-hover="background:#f5e8c8">IG</a>
+        <a href="#" aria-label="Facebook Daki" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:12px" style-hover="background:#f5e8c8">FB</a>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; justify-content: center; align-items: flex-end">
+      <span>📍 Fryštátská 151/15, Fryštát 733 01, Karviná 1</span>
+      <a href="tel:+420770404074" style="text-decoration:none;font-weight:700">📞 +420 770 404 074</a>
+      <span>🕐 Po–Pá: 10:00 – 18:00 · Ne: 11:00 – 19:00</span>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:12px;color:#a5523a;padding:16px 24px;border-top:1px solid #f5e8c8">© 2026 DAKI BISTRO · <a href="#" style="color:#a5523a">Zásady soukromí</a> · <a href="#" style="color:#a5523a">Cookies</a></div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showInstagram&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sekce&quot;},&quot;igFeedUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Instagram&quot;}}">class Component extends DCLogic {
+  state = { posts: [] };
+  componentDidMount() {
+    const url = this.props.igFeedUrl;
+    if (!url) return;
+    fetch(url).then(r => r.json()).then(data => {
+      // supports Behold.so feed JSON ({posts:[...]}) or a plain array
+      const raw = Array.isArray(data) ? data : (data.posts || data.media || []);
+      const posts = raw.slice(0, 8).map(p => ({
+        img: p.sizes?.medium?.mediaUrl || p.mediaUrl || p.thumbnailUrl || p.image || p.img,
+        link: p.permalink || p.link || 'https://www.instagram.com/daki.food/',
+        caption: (p.caption || 'Post z Instagramu @daki.food').slice(0, 120)
+      })).filter(p => p.img);
+      this.setState({ posts });
+    }).catch(() => {});
+  }
+  renderVals() {
+    const hasFeed = this.state.posts.length > 0;
+    return {
+      showInstagram: this.props.showInstagram ?? true,
+      hasFeed,
+      igPosts: this.state.posts,
+      dropGridDisplay: hasFeed ? 'none' : 'grid'
+    };
+  }
+}</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Daki Web";
+  // rAF raced with a short timeout: inside a cross-origin iframe (PrintMode),
+  // rAF can be throttled or paused even while the tab is focused, which would
+  // hang the scroll loop and never reach print(). Same pattern as
+  // buildExportSettleScript (export/shared.ts).
+  var raf = function () {
+    return Promise.race([
+      new Promise(function (r) { requestAnimationFrame(r); }),
+      new Promise(function (r) { setTimeout(r, 50); }),
+    ]);
+  };
+  var t0 = performance.now();
+  var mark = function (phase) {
+    var ms = Math.round(performance.now() - t0);
+    console.info('[autoprint]', phase, ms + 'ms');
+    try { parent.postMessage({ __omelette_autoprint: { phase: phase, ms: ms } }, '*'); } catch (e) {}
+  };
+  mark('start');
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    // A placeholder whose fetch failed (.sc-placeholder-error inside) keeps
+    // .sc-placeholder forever — don't wait on it. JS loop, not :has(), so an
+    // engine without :has() support can't throw out of the while and skip
+    // print() entirely.
+    var pendingPlaceholders = function () {
+      var all = settleRoot.querySelectorAll('.sc-placeholder'), n = 0;
+      for (var i = 0; i < all.length; i++)
+        if (!all[i].querySelector('.sc-placeholder-error')) n++;
+      return n;
+    };
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        pendingPlaceholders() === 0;
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  mark('settle-done' + (settleRoot ? ' (errs=' + settleRoot.querySelectorAll('.sc-placeholder-error').length + ' pending=' + pendingPlaceholders() + ')' : ''));
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    var scrollDeadline = Date.now() + 4000;
+    for (let y = 0; y <= full && Date.now() < scrollDeadline; y += step) {
+      window.scrollTo(0, y);
+      await raf();
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  mark('scroll-done');
+  try { await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 3000))]); } catch (e) {}
+  mark('fonts-done');
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await raf();
+    sweep();
+    await raf();
+  } catch (e) {}
+  // A document that owns its print CSS (the doc-page starter injects the
+  // meta at runtime; hand-rolled print designs author it) gets no automatic
+  // page geometry and keeps its forced breaks: strip the injected default
+  // @page — write time cannot see a runtime-injected meta — skip the frame
+  // override below, and skip the fakepage-flattening further down. What
+  // still applies: the print baseline and break-hygiene defaults (no @page
+  // in either; low specificity, so the document's own print CSS wins) and
+  // the break-inside relaxation on >page elements (avoid on those cannot
+  // be honored whoever authored it).
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+  if (ownsPrint) {
+    var dst = document.querySelector('style[data-omelette-print-defaults]');
+    if (dst && dst.textContent) {
+      dst.textContent = dst.textContent.replace(/@page\b[^{}]*\{[^}]*\}/, '');
+    }
+  }
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…} or declared print ownership
+  // via the meta above. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+  // Name-presence check, case-insensitive — the same contract as the
+  // instant-PDF path's runtime check in deck-stage-export.ts. The name is
+  // a string literal here because that file interpolates this script into
+  // its print script, so importing a shared constant from it would be a
+  // cycle; measure.test.ts pins the literal so the two cannot drift apart
+  // silently.
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage, ownsPrint: ownsPrint };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: off unless the page opts in via data-om-multi-frame on the
+  // stop element — the explicit opt-in is what guards against card grids
+  // and pricing tables that match the geometry but aren't separate
+  // canvases. Two ways to name the frames, explicit first:
+  // 1. Descendants marked data-om-frame-export (the social-frames starter
+  //    marks each asset frame; shells/panels around them are presentation,
+  //    so nesting is expected). Document order.
+  // 2. Fallback, no marked descendants: direct children with an authored px
+  //    width AND height (the original geometry heuristic).
+  // Frames may be different sizes (a gallery mixes 1080×1920 stories with
+  // 728×90 banners); data-om-frame-label rides along for export filenames.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var visOk = function (e) {
+      var cs; try { cs = getComputedStyle(e); } catch (err) { return false; }
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.position !== 'fixed';
+    };
+    // A frame's crop is its VISUAL box — never the scrollHeight-inflated
+    // rect that rectOf computes for page roots. Shadow-DOM hover controls
+    // (image-slot's Replace bar parks 29px below its host) and similar
+    // escaping UI contribute scrollable overflow to the frame, and the
+    // inflated height both squashes the nominal-size resize and drags
+    // content below the frame into the crop. Zoom-independent; bit every
+    // slot-bearing frame.
+    var frameRectOf = function (e) {
+      var r = e.getBoundingClientRect();
+      return { left: r.left + sx, top: r.top + sy, width: r.width, height: r.height };
+    };
+    var pushCand = function (list, e) {
+      if (!visOk(e)) return;
+      var rc = frameRectOf(e);
+      if (rc.width < 2 || rc.height < 2) return;
+      var lbl = e.getAttribute('data-om-frame-label');
+      if (lbl) rc.label = lbl;
+      list.push(rc);
+    };
+    var cands = [];
+    var marked = el.querySelectorAll('[data-om-frame-export]');
+    if (marked.length) {
+      for (var mk = 0; mk < marked.length; mk++) pushCand(cands, marked[mk]);
+    } else {
+      for (var k = 0; k < el.children.length; k++) {
+        var ch = el.children[k];
+        if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+        pushCand(cands, ch);
+      }
+    }
+    if (cands.length >= 2) {
+      return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (!ownsPrint && __m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          // An owns-print doc's forced breaks are intentional sheet
+          // boundaries, never fake-paged simulation — don't strip them.
+          // The break-inside relaxation above still applies: avoid on a
+          // >page element is impossible to honor whoever authored it.
+          if (
+            !ownsPrint &&
+            (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always')
+          ) {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  mark('print-calling');
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

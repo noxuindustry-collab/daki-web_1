@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preload" href="assets/CherryBombOne-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="assets/Montserrat-VariableFont.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/duck-cursor.css">
+<script src="assets/i18n.js"></script>
+<style>
+@font-face{font-family:'Cherry Bomb One';src:url('assets/CherryBombOne-Regular.ttf') format('truetype');font-weight:400;font-display:block}
+@font-face{font-family:'Montserrat';src:url('assets/Montserrat-VariableFont.ttf') format('truetype');font-weight:100 900;font-display:block}
+body{margin:0;background:#fef7e5;font-family:Montserrat,system-ui,sans-serif;color:#5c2517}
+a{color:#873924}a:hover{color:#a5523a}
+::selection{background:#f0ce7a;color:#5c2517}
+@media (min-width:761px){.daki-mobile-menu{display:none!important}}
+@media (max-width:760px){
+  .daki-navlinks{display:none!important}
+  .daki-lang{display:none!important}
+  .daki-cta-desktop{display:none!important}
+  .daki-burger{display:inline-flex!important}
+}
+@media (max-width:560px){
+  .daki-navrow{padding:10px 14px!important;gap:10px!important}
+  .daki-navrow>a>img{height:34px!important}
+  .daki-pp-wrap{padding:104px 18px 56px!important}
+  .daki-pp-title{font-size:32px!important}
+}
+</style>
+</helmet>
+
+<a href="#obsah" style="position:absolute;left:16px;top:-48px;z-index:100;background:#873924;color:#fef7e5;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none" style-focus="top:12px" data-i18n="skip">Přeskočit na obsah</a>
+
+<header data-screen-label="Navigace" style="position:fixed;top:0;left:0;right:0;z-index:100;background:#fef7e5;border-bottom:1px solid #f5e8c8;box-shadow:0 2px 12px rgba(92,37,23,.06)">
+  <div class="daki-navrow" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:14px 24px">
+    <a href="Daki Web.dc.html" aria-label="Daki — domů" style="display:flex;flex:none"><img src="assets/logo-red.svg" alt="Daki" width="104" height="45" style="display:block;height:44px;width:auto"></a>
+    <nav aria-label="Hlavní navigace" class="daki-navlinks" style="display:flex;gap:26px;font-size:14px;font-weight:600">
+      <a href="Daki Web.dc.html#o-nas" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+      <a href="Daki Nabidka.dc.html" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
+      <a href="Daki Web.dc.html#kontakt" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+      <div role="group" aria-label="Jazyk" class="daki-lang" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
+        <button type="button" class="clickable" data-lang-btn="cs" aria-pressed="true" style="border:0;font:inherit;font-weight:700;padding:6px 12px;background:#873924;color:#fef7e5;cursor:pointer">CZ</button>
+        <button type="button" class="clickable" data-lang-btn="en" aria-pressed="false" style="border:0;font:inherit;font-weight:700;padding:6px 12px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</button>
+      </div>
+      <a class="daki-cta-desktop" href="https://www.foodora.cz/restaurant/xbzm/daki-bistro-karvina" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:9px 18px;background:#d3155e;color:#fff;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.3px;text-decoration:none" style-hover="background:#b81252;color:#fff">foodora</a>
+      <a class="daki-cta-desktop" href="Daki Nabidka.dc.html" style="display:inline-flex;align-items:center;padding:9px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5" data-i18n="nav.ctamenu">MENU</a>
+      <button type="button" class="daki-burger clickable" data-burger="" aria-label="Menu" aria-expanded="false" aria-controls="daki-mobile-menu" style="display:none;align-items:center;justify-content:center;flex:none;border:0;background:#fef7e5;color:#873924;cursor:pointer;padding:0">
+        <svg data-burger-icon="" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+  <div id="daki-mobile-menu" class="daki-mobile-menu" data-mobile-menu="" style="display:none;flex-direction:column;gap:4px;padding:6px 20px 20px;background:#fef7e5;border-top:1px solid #f5e8c8">
+    <a data-mm-link="" href="Daki Web.dc.html#o-nas" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+    <a data-mm-link="" href="Daki Nabidka.dc.html" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
+    <a data-mm-link="" href="Daki Web.dc.html#kontakt" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+    <div style="display:flex;align-items:center;gap:12px;padding-top:16px;flex-wrap:wrap">
+      <div role="group" aria-label="Jazyk" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
+        <button type="button" class="clickable" data-lang-btn="cs" aria-pressed="true" style="border:0;font:inherit;font-weight:700;padding:8px 16px;background:#873924;color:#fef7e5;cursor:pointer">CZ</button>
+        <button type="button" class="clickable" data-lang-btn="en" aria-pressed="false" style="border:0;font:inherit;font-weight:700;padding:8px 16px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</button>
+      </div>
+      <a data-mm-link="" href="https://www.foodora.cz/restaurant/xbzm/daki-bistro-karvina" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:10px 20px;background:#d3155e;color:#fff;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.3px;text-decoration:none">foodora</a>
+    </div>
+  </div>
+</header>
+
+<main id="obsah" data-screen-label="Zásady soukromí" class="daki-pp-wrap" style="max-width:760px;margin:0 auto;padding:130px 24px 72px;box-sizing:border-box">
+  <p style="margin:0 0 6px;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#a5523a" data-i18n="ckp.kicker">Právní informace</p>
+  <h1 class="daki-pp-title" style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(32px,5vw,46px);line-height:1.1;color:#873924" data-i18n="pp.title">Zásady ochrany soukromí</h1>
+  <p style="margin:14px 0 0;font-size:14px;color:#a5523a" data-i18n="pp.updated">Poslední aktualizace: 22. července 2026</p>
+
+  <div style="display:flex;flex-direction:column;gap:36px;margin-top:40px;font-size:16px;line-height:1.7">
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="pp.h1">Kdo jsme</h2>
+      <p style="margin:0" data-i18n="pp.p1">Správcem vašich osobních údajů je <strong>Noxu Industry s.r.o.</strong>, Fryštátská 151/15, Fryštát, 733 01 Karviná 1.</p>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="pp.h2">Jaké údaje zpracováváme</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="pp.t1h">Návštěva webu</strong>
+          <p style="margin:0;font-size:15px" data-i18n="pp.t1b">Web sám o sobě žádné osobní údaje nesbírá. Ukládáme jen technická nastavení (jazyk, volba cookies) — víc v <a href="Daki Cookies.dc.html">zásadách cookies</a>.</p>
+        </div>
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="pp.t2h">Objednávky přes Foodora</strong>
+          <p style="margin:0;font-size:15px" data-i18n="pp.t2b">Objednáváte-li přes Foodoru, vaše údaje (jméno, adresa, telefon) zpracovává Foodora podle svých zásad. My vidíme jen to, co potřebujeme k přípravě a předání objednávky.</p>
+        </div>
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="pp.t3h">Komunikace s námi</strong>
+          <p style="margin:0;font-size:15px" data-i18n="pp.t3b">Napíšete-li nám na Instagramu, zpracováváme vaši zprávu jen pro vyřízení dotazu. Nikam ji nepředáváme a nepoužíváme ji k marketingu.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="pp.h3">Komu údaje předáváme</h2>
+      <p style="margin:0" data-i18n="pp.p3">Nikomu je neprodáváme ani nepředáváme k marketingu. Třetí strany (Foodora, Google Maps, Instagram) zpracovávají údaje podle vlastních zásad, jakmile na jejich službu kliknete.</p>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="pp.h4">Vaše práva</h2>
+      <p style="margin:0" data-i18n="pp.p4">Podle GDPR máte právo na přístup ke svým údajům, jejich opravu či výmaz, omezení zpracování a právo podat stížnost u Úřadu pro ochranu osobních údajů (<a href="https://uoou.gov.cz">uoou.gov.cz</a>).</p>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="pp.h5">Kontakt</h2>
+      <p style="margin:0" data-i18n="pp.p5">S dotazy k osobním údajům se na nás obraťte osobně v bistru (Fryštátská 151/15, Karviná) nebo na e-mailu <a href="mailto:noxu.industry@gmail.com">noxu.industry@gmail.com</a>.</p>
+    </section>
+  </div>
+</main>
+
+<footer style="border-top:1px solid #f5e8c8;margin-top:24px">
+  <div style="text-align:center;font-size:12px;color:#a5523a;padding:16px 24px">© 2026 DAKI BISTRO · <a href="Daki Cookies.dc.html" style="color:#a5523a" data-i18n="footer.cookies">Cookies</a> · <a href="Daki Web.dc.html" style="color:#a5523a" data-i18n="ckp.back">Zpět na hlavní stránku</a></div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._setupBurger();
+    window.dakiApplyLang && window.dakiApplyLang();
+  }
+  _setupBurger() {
+    const btn = document.querySelector('[data-burger]');
+    const panel = document.querySelector('[data-mobile-menu]');
+    const icon = document.querySelector('[data-burger-icon]');
+    if (!btn || !panel) return;
+    const HAMB = '<line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line>';
+    const CLOSE = '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>';
+    const setOpen = (open) => {
+      panel.style.display = open ? 'flex' : 'none';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (icon) icon.innerHTML = open ? CLOSE : HAMB;
+    };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); setOpen(panel.style.display === 'none'); });
+    panel.querySelectorAll('[data-mm-link]').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    this._onDocClick = (e) => { if (!panel.contains(e.target) && !btn.contains(e.target)) setOpen(false); };
+    document.addEventListener('click', this._onDocClick);
+    this._onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', this._onKey);
+    this._onResize = () => { if (window.innerWidth > 760) setOpen(false); };
+    window.addEventListener('resize', this._onResize, { passive: true });
+  }
+  componentWillUnmount() {
+    this._onDocClick && document.removeEventListener('click', this._onDocClick);
+    this._onKey && document.removeEventListener('keydown', this._onKey);
+    this._onResize && window.removeEventListener('resize', this._onResize);
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

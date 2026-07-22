@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preload" href="assets/CherryBombOne-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="assets/Montserrat-VariableFont.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/duck-cursor.css">
+<script src="assets/i18n.js"></script>
+<script src="assets/menu-dishes.js"></script>
+<style>
+@font-face{font-family:'Cherry Bomb One';src:url('assets/CherryBombOne-Regular.ttf') format('truetype');font-weight:400;font-display:block}
+@font-face{font-family:'Montserrat';src:url('assets/Montserrat-VariableFont.ttf') format('truetype');font-weight:100 900;font-display:block}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fef7e5;font-family:Montserrat,system-ui,sans-serif;color:#5c2517}
+a{color:#873924}a:hover{color:#a5523a}
+::selection{background:#f0ce7a;color:#5c2517}
+.daki-catpill.is-active{background:#873924!important;color:#fef7e5!important}
+.daki-nab-grid>article{min-width:0}
+image-slot::part(frame){background:transparent}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#cat-hl{display:none!important}.daki-catpill{transition:background .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1)!important}}
+@media (max-width:900px){
+  .daki-navrow{gap:16px!important}
+  .daki-nab-grid{grid-template-columns:repeat(2,1fr)!important}
+  .daki-footer-grid{gap:40px!important}
+}
+@media (min-width:761px){.daki-mobile-menu{display:none!important}}
+@media (max-width:760px){
+  .daki-navlinks{display:none!important}
+  .daki-lang{display:none!important}
+  .daki-cta-desktop{display:none!important}
+  .daki-burger{display:inline-flex!important}
+}
+.daki-nab-grid>article[role="button"]{transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .2s ease}
+.daki-nab-grid>article[role="button"]:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(92,37,23,.14)}
+.daki-nab-grid>article[role="button"]:focus-visible{outline:3px solid #873924;outline-offset:3px}
+#dish-close:hover{background:#f5e8c8!important}
+@media (prefers-reduced-motion:reduce){.daki-nab-grid>article[role="button"]{transition:box-shadow .2s ease}.daki-nab-grid>article[role="button"]:hover{transform:none}}
+@media (max-width:560px){
+  #dish-overlay{padding:8px!important}
+  #dish-modal{max-height:calc(100dvh - 16px)!important}
+  .daki-navrow{padding:10px 14px!important;gap:10px!important}
+  .daki-navrow>a>img{height:34px!important}
+  .daki-navlinks{display:none!important}
+  #nabidka{padding:44px 18px 6px!important}
+  #nabidka h1{font-size:36px!important}
+  #cat-bar{padding:10px 12px!important}
+  #cat-bar nav{flex-wrap:nowrap!important;justify-content:flex-start!important;max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #cat-bar nav::-webkit-scrollbar{display:none}
+  .daki-catpill{padding:13px 20px!important;flex:none;white-space:nowrap}
+  .daki-nab-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .daki-nab-sect{padding-left:18px!important;padding-right:18px!important;padding-bottom:56px!important;gap:44px!important}
+  .daki-footer-grid{flex-direction:column!important;gap:28px!important;padding:44px 18px 30px!important}
+  .daki-footer-info{width:auto!important;height:auto!important}
+}
+</style>
+</helmet>
+
+<a href="#obsah" style="position:absolute;left:16px;top:-48px;z-index:100;background:#873924;color:#fef7e5;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none" style-focus="top:12px" data-i18n="skip">Přeskočit na obsah</a>
+
+<header data-screen-label="Navigace" style="position:fixed;top:0;left:0;right:0;z-index:100;background:#fef7e5;border-bottom:1px solid #f5e8c8;box-shadow:0 2px 12px rgba(92,37,23,.06)">
+  <div class="daki-navrow" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:14px 24px">
+    <a href="Daki Web.dc.html" aria-label="Daki — domů" style="display:flex;flex:none"><img src="assets/logo-red.svg" alt="Daki" width="104" height="45" style="display:block;height:44px;width:auto"></a>
+    <nav aria-label="Hlavní navigace" class="daki-navlinks" style="display:flex;gap:26px;font-size:14px;font-weight:600">
+      <a href="Daki Web.dc.html#o-nas" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+      <a href="#nabidka" style="text-decoration:none;color:#873924;border-bottom:3px solid #e3b555;padding:4px 0" data-i18n="nav.menu">Nabídka</a>
+      <a href="Daki Web.dc.html#kontakt" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+      <div role="group" aria-label="Jazyk" class="daki-lang" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
+        <button type="button" class="clickable" data-lang-btn="cs" aria-pressed="true" style="border:0;font:inherit;font-weight:700;padding:6px 12px;background:#873924;color:#fef7e5;cursor:pointer">CZ</button>
+        <button type="button" class="clickable" data-lang-btn="en" aria-pressed="false" style="border:0;font:inherit;font-weight:700;padding:6px 12px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</button>
+      </div>
+      <a class="daki-cta-desktop" href="https://www.foodora.cz/restaurant/xbzm/daki-bistro-karvina" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:9px 18px;background:#d3155e;color:#fff;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.3px;text-decoration:none" style-hover="background:#b81252;color:#fff">foodora</a>
+      <a class="daki-cta-desktop" href="#nabidka" style="display:inline-flex;align-items:center;padding:9px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5" data-i18n="nav.ctamenu">MENU</a>
+      <button type="button" class="daki-burger clickable" data-burger aria-label="Menu" aria-expanded="false" aria-controls="daki-mobile-menu" style="display:none;align-items:center;justify-content:center;flex:none;background:#fef7e5;color:#873924;cursor:pointer;padding:0;border:0">
+        <svg data-burger-icon width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+  <div id="daki-mobile-menu" class="daki-mobile-menu" data-mobile-menu style="display:none;flex-direction:column;gap:4px;padding:6px 20px 20px;background:#fef7e5;border-top:1px solid #f5e8c8">
+    <a data-mm-link href="Daki Web.dc.html#o-nas" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+    <a data-mm-link href="#nabidka" style="padding:13px 6px;font-size:16px;font-weight:700;color:#873924;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
+    <a data-mm-link href="Daki Web.dc.html#kontakt" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+    <div style="display:flex;align-items:center;gap:12px;padding-top:16px;flex-wrap:wrap">
+      <div role="group" aria-label="Jazyk" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
+        <button type="button" class="clickable" data-lang-btn="cs" aria-pressed="true" style="border:0;font:inherit;font-weight:700;padding:8px 16px;background:#873924;color:#fef7e5;cursor:pointer">CZ</button>
+        <button type="button" class="clickable" data-lang-btn="en" aria-pressed="false" style="border:0;font:inherit;font-weight:700;padding:8px 16px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</button>
+      </div>
+      <a data-mm-link href="https://www.foodora.cz/restaurant/xbzm/daki-bistro-karvina" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:10px 20px;background:#d3155e;color:#fff;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.3px;text-decoration:none">foodora</a>
+    </div>
+  </div>
+</header>
+
+<main id="obsah" style="padding-top:73px">
+<section id="nabidka" data-screen-label="Naše nabídka" style="padding:64px 24px 10px;display:flex;justify-content:center;scroll-margin-top:90px">
+  <h1 style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1.05;color:#873924;text-transform:uppercase;text-align:center" data-i18n="menu.title">Naše nabídka</h1>
+</section>
+
+<div id="cat-bar" data-screen-label="Kategorie" style="position:sticky;top:73px;z-index:90;display:flex;justify-content:center;padding:12px 16px;pointer-events:none">
+  <nav aria-label="Kategorie nabídky" style="pointer-events: auto; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 8px; border: 2px dashed #a5613f; border-radius: 999px; background: #fef7e5; box-shadow: 0 6px 18px rgba(92,37,23,.12); border-width: 2px; border-style: double; position: relative">
+    <span id="cat-hl" aria-hidden="true" style="position:absolute;left:0;top:0;width:0;height:0;border-radius:999px;background:#873924;pointer-events:none;transition:transform .4s cubic-bezier(.22,1,.36,1),width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1)"></span>
+    <a class="daki-catpill is-active" href="#predkrmy" style="position:relative;z-index:1;display:inline-flex;padding:9px 22px;border-radius:999px;font-size:14px;font-weight:700;color:#873924;text-decoration:none;transition:background .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.34,1.4,.64,1)" style-hover="background:#f5e8c8;color:#873924" style-active="transform:scale(.97)" data-i18n="cat.starters">Předkrmy</a>
+    <a class="daki-catpill" href="#pholevky" style="position:relative;z-index:1;display:inline-flex;padding:9px 22px;border-radius:999px;font-size:14px;font-weight:700;color:#873924;text-decoration:none;transition:background .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.34,1.4,.64,1)" style-hover="background:#f5e8c8;color:#873924" style-active="transform:scale(.97)" data-i18n="cat.pho">PHOlévky</a>
+    <a class="daki-catpill" href="#hlavni-jidla" style="position:relative;z-index:1;display:inline-flex;padding:9px 22px;border-radius:999px;font-size:14px;font-weight:700;color:#873924;text-decoration:none;transition:background .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.34,1.4,.64,1)" style-hover="background:#f5e8c8;color:#873924" style-active="transform:scale(.97)" data-i18n="cat.mains">Hlavní jídla</a>
+  </nav>
+</div>
+
+<div class="daki-nab-sect" style="max-width:1140px;margin:0 auto;padding:28px 24px 80px;display:flex;flex-direction:column;gap:64px">
+
+<section id="predkrmy" data-screen-label="Předkrmy" style="scroll-margin-top:170px">
+  <h2 style="margin:0 0 24px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(26px,3vw,38px);color:#873924" data-i18n="cat.starters">Předkrmy</h2>
+  <div class="daki-nab-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p1" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené jarní závitky s masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">99&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavé smažené závitky.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p2" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené jarní závitky s krevetami a vepřovým masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">115&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavé smažené závitky.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p3" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Veganské smažené závitky</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">99&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavé smažené závitky plněné zeleninou podávané se sladkokyselou omáčkou. 3 ks.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p4" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené trojhránky s mořskými plody</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">80&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavé smažené trojhránky plněné směsí mořských plodů.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p5" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Krevetové knedlíčky Ha Cao</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">99&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Knedlíčky plněné krevetami vařené na páře.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p6" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Letní závitky s grilovaným masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">119&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Hanojský styl letní závitků z grilovaného masa, salátu, bylinek. Podávané se sladkokyselou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p7" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Letní závitky s krevetami</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">119&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Rýžový papír, krevety, salát, bylinky, rýžové nudle, sladkokyselá omáčka. 3ks</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-p8" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené krevety v panko</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">119&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Smažené křupavé krevety, 3 ks</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="pholevky" data-screen-label="PHOlévky" style="scroll-margin-top:170px">
+  <h2 style="margin:0 0 24px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(26px,3vw,38px);color:#873924" data-i18n="cat.pho">PHOlévky</h2>
+  <div class="daki-nab-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-s1" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Pho s rýžovými nudlemi a kuřecím masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Tradiční vietnamská polévka s kuřecím masem, rýžovými nudlemi, bylinkami a silným vývarem.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-s2" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Pho s hovězím masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">179&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Tradiční vietnamská polévka s hovězím masem, rýžovými nudlemi, bylinkami a silným vývarem.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-s3" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Pho Sot Vang s hovězím</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">179&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Vietnamská polévka s hovězím masem na víně s rýžovými nudlemi, bylinkami a výrazným vývarem.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="hlavni-jidla" data-screen-label="Hlavní jídla" style="scroll-margin-top:170px">
+  <h2 style="margin:0 0 24px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(26px,3vw,38px);color:#873924" data-i18n="cat.mains">Hlavní jídla</h2>
+  <div class="daki-nab-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h1" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Kari s křupavým kuřecím masem a rýží</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">159&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Kari s křupavým kuřecím masem, zeleninou a rýží.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h2" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Bun Bo Nam Bo</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">179&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Rýžové nudle s hovězím masem, čerstvou zeleninou, bylinkami, arašídy a vietnamskou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h3" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Bun Cha s vepřovým masem a rýžovými nudlemi</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">179&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Bun cha podávaný s vepřovým masem a rýžovými nudlemi, zeleninou a vietnamskou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h4" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Letní kuřecí salát</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">145&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Osvěžující letní salát s kuřecím masem, čerstvou zeleninou a voňavými bylinkami.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h5" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Rýžové nudle se smaženými závitky s vepřovým masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">155&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Rýžové nudle se smaženými závitky, zeleninou a vietnamskou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h6" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Rýžové nudle se smaženými závitky s krevetami</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Rýžové nudle se smaženými závitky, zeleninou a vietnamskou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h7" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Rýžové nudle se smaženými veganskými závitky</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">155&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Rýžové nudle s veganskými smaženými závitky, zeleninou a veganskou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h8" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažená rýže s masem</h3><div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 5px; align-items: stretch; flex-wrap: wrap; max-width: 100%; min-width: 0"><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.chicken">kuřecí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">150 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.beef">hovězí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">160 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.prawns">krevety</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">169&nbsp;Kč</span></div></div>
+        
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Smažená rýže s masem, zeleninou a jemným dochucením.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h9" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené rýžové nudle s masem</h3>
+        <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 5px; align-items: stretch; flex-wrap: wrap; max-width: 100%; min-width: 0"><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.chicken">kuřecí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">150 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.beef">hovězí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">160 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.prawns">krevety</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">169&nbsp;Kč</span></div></div>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Smažené rýžové nudle s masem a zeleninou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h10" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené nudle s masem</h3>
+        <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 5px; align-items: stretch; flex-wrap: wrap; max-width: 100%; min-width: 0"><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.chicken">kuřecí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">150 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.beef">hovězí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">160 Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.prawns">krevety</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">169&nbsp;Kč</span></div></div>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Smažené nudle s masem a zeleninou v jemné omáčce.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h11" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Pho Xào s masem</h3><div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 5px; align-items: stretch; flex-wrap: wrap; max-width: 100%; min-width: 0"><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.pork">vepřové</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">169&nbsp;Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.beef">hovězí</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">179&nbsp;Kč</span></div><div style="box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: wrap; min-width: 0; gap: 6px 12px; justify-content: space-between; align-items: center"><span style="margin: 0; font-size: 15px; font-weight: 800; color: #873924; line-height: 1.3" data-i18n="meat.prawns">krevety</span><span style="background: #873924; color: #fef7e5; font-weight: 700; font-size: 13px; padding: 5px 14px; border-radius: 999px">189&nbsp;Kč</span></div></div>
+        
+          
+          
+          
+        
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Ploché rýžové nudle, maso dle výběru, zelenina, omáčka.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h12" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Pekingská kachna s rýží</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">229&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavá pekingská kachna podávaná s kokosovou omáčkou, rýží a čerstvou zeleninou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h13" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Vepřová krkovice ve sladkokyselé omáčce s rýží</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Vepřová krkovice ve sladkokyselé omáčce podávaná s rýží.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h14" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Thit kho tau s vepřovým masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Dušené vepřové maso, vejce, karamelová omáčka, kokosová voda, jasmínová rýže.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h15" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Thit kho tau s kuřecím masem</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Kuřecí maso, vejce, karamelová omáčka, kokosová voda, jasmínová rýže.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h16" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Bun Cha La Lot</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">169&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Mleté vepřové maso v listech betelu, rýžové nudle, bylinky. Podávané se sladkokyselou omáčkou.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h17" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažené trojhránky s mořskými plody a hranolky</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">125&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Křupavé smažené trojhránky s mořskými plody podávané s hranolky.</p>
+      </div>
+    </article>
+    <article style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(92,37,23,.08)">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="dish-h18" shape="rounded" radius="14" placeholder="Foto" style="width:104px;height:104px;flex:none" hint-size="104px,104px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+        <h3 style="margin:0;font-size:15px;font-weight:800;color:#873924;line-height:1.3">Smažený sýr s hranolky</h3>
+        <span style="align-self:flex-start;background:#873924;color:#fef7e5;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px">125&nbsp;Kč</span>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#8a7263">Klasický smažený sýr podávaný s hranolky.</p>
+      </div>
+    </article>
+  </div>
+</section>
+</div>
+</main>
+
+<footer data-screen-label="Patička" style="background:#fef7e5;border-top:2px solid #f5e8c8">
+  <div class="daki-footer-grid" style="max-width: 1140px; margin: 0 auto; display: flex; grid-template-columns: 1fr 1fr; padding: 52px 24px 36px; justify-content: space-between; gap: 201px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <img src="assets/logo-red.svg" alt="Daki" width="160" height="69" style="width: 160px; height: auto; display: block; gap: 258px">
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#a5523a;max-width:300px" data-i18n="footer.tag">Autentická vietnamská kuchyně v srdci Karviné.<br>Rodinný recept, moderní podání.</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://www.instagram.com/daki.food/" aria-label="Instagram Daki" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:12px" style-hover="background:#f5e8c8">IG</a>
+        <a href="https://www.facebook.com/p/Daki-Bistro-Karvin%C3%A1-61580714345782/" aria-label="Facebook Daki" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid #873924;border-radius:50%;color:#873924;text-decoration:none;font-weight:800;font-size:12px" style-hover="background:#f5e8c8">FB</a>
+      </div>
+    </div>
+    <div class="daki-footer-info" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; justify-content: center; align-items: flex-start; width: 185px; height: 203px">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Fry%C5%A1t%C3%A1tsk%C3%A1+151%2F15%2C+Karvin%C3%A1" target="_blank" rel="noopener" style="text-align: left; display: flex; justify-content: flex-start; text-decoration: none; color: inherit" style-hover="color:#a5523a">Fryštátská 151/15, Fryštát 733 01, Karviná 1</a>
+      <a href="tel:+420770404074" style="text-decoration: none; font-weight: 700; text-align: left; display: flex; justify-content: flex-start">+420 770 404 074</a>
+      <span style="text-align: left; display: flex; justify-content: flex-start" data-i18n="footer.hours">Po–Pá: 10:00 – 18:00 <br>Ne: 11:00 – 19:00</span>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:12px;color:#a5523a;padding:16px 24px;border-top:1px solid #f5e8c8">© 2026 DAKI BISTRO · <a href="Daki Soukromi.dc.html" style="color:#a5523a" data-i18n="footer.privacy">Zásady soukromí</a> · <a href="Daki Cookies.dc.html" style="color:#a5523a" data-i18n="footer.cookies">Cookies</a></div>
+</footer>
+
+<div id="dish-overlay" style="position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(60,24,14,.55);opacity:0">
+  <div id="dish-modal" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title" tabindex="-1" style="position:relative;width:100%;max-width:640px;max-height:92dvh;overflow:auto;background:#fef7e5;border-radius:24px;box-shadow:0 24px 64px rgba(60,24,14,.35);outline:none">
+    <button id="dish-close" aria-label="Zavřít detail" style="position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border:none;border-radius:50%;background:#fef7e5;color:#873924;font-size:20px;font-weight:800;font-family:Montserrat,system-ui,sans-serif;box-shadow:0 4px 14px rgba(92,37,23,.25);display:flex;align-items:center;justify-content:center">✕</button>
+    <div style="width:100%;aspect-ratio:16/10;background:transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none;padding:20px 20px 0;box-sizing:border-box">
+      <img id="dish-modal-img" alt="" style="width:100%;height:100%;object-fit:cover;display:none">
+      <span id="dish-modal-noimg" style="color:#c8a262;font-weight:700;font-size:14px;letter-spacing:2px">FOTO</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;padding:24px 28px 30px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap">
+        <h3 id="dish-modal-title" style="margin:0;font-size:24px;font-weight:800;color:#873924;line-height:1.25;flex:1;min-width:200px"></h3>
+        <span id="dish-modal-price" style="flex:none;background:#873924;color:#fef7e5;font-weight:700;font-size:16px;padding:8px 20px;border-radius:999px"></span>
+      </div>
+      <p id="dish-modal-desc" style="margin:0;font-size:15px;line-height:1.65;color:#6b5142"></p>
+      <div id="dish-modal-alg-wrap" style="border-top:1px dashed #e3cba0;padding-top:12px">
+        <span id="dish-modal-alg-label" style="display:block;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#a5523a;margin-bottom:4px">Alergeny</span>
+        <p id="dish-modal-alg" style="margin:0;font-size:13px;line-height:1.5;color:#8a7263"></p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gridCols&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;3&quot;,&quot;options&quot;:[&quot;3&quot;,&quot;2&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mřížka&quot;},&quot;stickyPills&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Kategorie&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this._applyProps();
+    const header = document.querySelector('header');
+    const bar = document.getElementById('cat-bar');
+    const secs = ['predkrmy', 'pholevky', 'hlavni-jidla'].map(id => document.getElementById(id));
+    const pills = Array.from(document.querySelectorAll('.daki-catpill'));
+    this._pills = pills;
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const spy = () => {
+      // sticky top = live header height (responsive)
+      const hH = header ? header.offsetHeight : 73;
+      if (bar) bar.style.top = hH + 'px';
+      const off = hH + (bar ? bar.offsetHeight : 64) + 24;
+      let act = 0;
+      secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= off) act = i; });
+      // at the very bottom, force the last section active
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) act = secs.length - 1;
+      if (act !== this._act) { this._act = act; this._setActive(act); }
+    };
+    this._spy = spy;
+    this._onResize = () => { spy(); this._setActive(this._act ?? 0, true); };
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', this._onResize, { passive: true });
+    spy();
+    this._setActive(this._act ?? 0, true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this._setActive(this._act ?? 0, true));
+    this._setupReveal();
+    this._setupModal();
+    this._setupBurger();
+    window.dakiApplyLang && window.dakiApplyLang();
+  }
+  _setActive(idx, instant) {
+    const pills = this._pills || [];
+    if (!pills.length) return;
+    pills.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+    const hl = document.getElementById('cat-hl');
+    const p = pills[idx];
+    if (!hl || !p) return;
+    if (instant || this._reduced) hl.style.transition = 'none'; else hl.style.transition = '';
+    hl.style.width = p.offsetWidth + 'px';
+    hl.style.height = p.offsetHeight + 'px';
+    hl.style.transform = 'translate(' + p.offsetLeft + 'px,' + p.offsetTop + 'px)';
+    // na mobilu je lišta horizontálně scrollovatelná — aktivní pilulku doscrollovat do středu
+    const nav = p.parentElement;
+    if (nav && nav.scrollWidth > nav.clientWidth + 2) {
+      nav.scrollTo({ left: Math.max(0, p.offsetLeft - (nav.clientWidth - p.offsetWidth) / 2), behavior: (instant || this._reduced) ? 'auto' : 'smooth' });
+    }
+    if (instant || this._reduced) { void hl.offsetWidth; hl.style.transition = ''; return; }
+    hl.style.willChange = 'transform';
+    clearTimeout(this._hlT);
+    this._hlT = setTimeout(() => { hl.style.willChange = ''; }, 450);
+  }
+  _setupReveal() {
+    if (this._reduced || typeof IntersectionObserver === 'undefined') return;
+    const secs = ['predkrmy', 'pholevky', 'hlavni-jidla'].map(id => document.getElementById(id)).filter(Boolean);
+    const allCards = [];
+    secs.forEach(s => allCards.push(...s.querySelectorAll('article')));
+    const reveal = (el, d) => {
+      el.style.transitionDelay = d + 'ms';
+      el.style.willChange = 'transform, opacity';
+      el.style.opacity = '';
+      el.style.transform = '';
+      setTimeout(() => { el.style.transitionDelay = ''; el.style.willChange = ''; }, d + 700);
+    };
+    let fired = false;
+    this._rvIo = new IntersectionObserver(entries => {
+      fired = true;
+      entries.filter(e => e.isIntersecting).forEach(e => {
+        const cards = Array.from(e.target.querySelectorAll('article'));
+        // stagger po řádcích: skupiny podle offsetTop
+        const rows = new Map();
+        cards.forEach(c => { const t = Math.round(c.offsetTop / 12); if (!rows.has(t)) rows.set(t, rows.size); });
+        cards.forEach(c => reveal(c, Math.min(rows.get(Math.round(c.offsetTop / 12)), 6) * 90));
+        this._rvIo.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    allCards.forEach(c => {
+      c.style.transition = 'opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)';
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(24px)';
+    });
+    secs.forEach(s => this._rvIo.observe(s));
+    // pojistka: kdyby IO nevystřelilo, karty ukázat
+    setTimeout(() => {
+      if (!fired) {
+        this._rvIo.disconnect();
+        allCards.forEach(c => { c.style.opacity = ''; c.style.transform = ''; });
+      }
+    }, 900);
+  }
+  _setupModal() {
+    const dishes = window.DAKI_DISHES || {};
+    const ov = document.getElementById('dish-overlay');
+    const dlg = document.getElementById('dish-modal');
+    const btn = document.getElementById('dish-close');
+    if (!ov || !dlg) return;
+    // Delegovaně — image-sloty (nositelé id pokrmu) se mountují asynchronně,
+    // takže je řešíme až v okamžiku kliku; role/tabindex doplní retry níže.
+    const resolve = (el) => {
+      const card = el && el.closest && el.closest('.daki-nab-grid article');
+      const slot = card && card.querySelector('image-slot');
+      const id = slot && slot.id;
+      return (id && dishes[id]) ? { card, slot, id } : null;
+    };
+    this._dishClick = (e) => {
+      const hit = resolve(e.target);
+      if (!hit) return;
+      if (e.target.closest && e.target.closest('a')) return;
+      // klik do prázdného slotu / ovládání slotu (Replace/Edit, reframe) modal neotvírá
+      const p = e.composedPath ? e.composedPath() : [];
+      if (p.indexOf(hit.slot) > -1) {
+        if (!hit.slot.hasAttribute('data-filled') || hit.slot.hasAttribute('data-reframe')) return;
+        if (p.some(el => el.classList && (el.classList.contains('ctl') || el.classList.contains('spill')))) return;
+      }
+      this._openDish(hit.id, hit.card);
+    };
+    this._dishKey = (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const hit = resolve(e.target);
+      if (!hit || e.target !== hit.card) return;
+      e.preventDefault();
+      this._openDish(hit.id, hit.card);
+    };
+    document.addEventListener('click', this._dishClick);
+    document.addEventListener('keydown', this._dishKey);
+    // a11y atributy karet — opakovaně, dokud se sloty nenamountují
+    let tries = 0;
+    const arm = () => {
+      let done = 0, total = 0;
+      document.querySelectorAll('.daki-nab-grid article').forEach(card => {
+        total++;
+        const slot = card.querySelector('image-slot');
+        if (!slot || !dishes[slot.id]) return;
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-haspopup', 'dialog');
+        // PNG bez pozadí z tabulky: celá fotka (contain), průhledné pozadí karty
+        const d = dishes[slot.id];
+        if (d.img && slot.getAttribute('src') !== d.img) slot.setAttribute('src', d.img);
+        if (slot.getAttribute('fit') !== 'contain') slot.setAttribute('fit', 'contain');
+        done++;
+      });
+      this._applyCardLang(document.documentElement.lang);
+      // retry i když done===total: při pomalém načtení (standalone bundle) je zprvu namountováno jen pár karet
+      if ((done < total || total < 28) && ++tries < 60) this._armT = setTimeout(arm, 250);
+    };
+    arm();
+    btn.addEventListener('click', () => this._closeDish());
+    ov.addEventListener('mousedown', (e) => { if (e.target === ov) this._closeDish(); });
+    this._dishEsc = (e) => {
+      if (!this._dishOpen) return;
+      if (e.key === 'Escape') { e.stopPropagation(); this._closeDish(); }
+      if (e.key === 'Tab') { e.preventDefault(); (document.activeElement === btn ? dlg : btn).focus(); }
+    };
+    document.addEventListener('keydown', this._dishEsc, true);
+    // přepnutí jazyka → přepsat karty (názvy+popisy z tabulky) i otevřený detail
+    window.dakiOnLang = (lang) => { this._applyCardLang(lang); if (this._dishOpen) this._fillDish(); };
+  }
+  _applyCardLang(lang) {
+    const dishes = window.DAKI_DISHES || {};
+    const en = lang === 'en';
+    document.querySelectorAll('.daki-nab-grid article').forEach(card => {
+      const slot = card.querySelector('image-slot');
+      const d = slot && dishes[slot.id];
+      if (!d) return;
+      const h = card.querySelector('h3:not([data-i18n])'); // hlavní název (varianty masa mají data-i18n)
+      const p = card.querySelector('p');
+      // zapisovat jen při změně — jinak MutationObserver v i18n.js spustí nekonečnou smyčku apply()
+      const n = (en && d.nazev_en) ? d.nazev_en : d.nazev;
+      const t = (en && d.popis_en) ? d.popis_en : d.popis;
+      if (h && h.textContent !== n) h.textContent = n;
+      if (p && p.textContent !== t) p.textContent = t;
+    });
+  }
+  _fillDish() {
+    const d = (window.DAKI_DISHES || {})[this._dishId];
+    if (!d) return;
+    const en = document.documentElement.lang === 'en';
+    document.getElementById('dish-modal-title').textContent = (en && d.nazev_en) ? d.nazev_en : d.nazev;
+    document.getElementById('dish-modal-price').textContent = d.cena + '\u00a0K\u010d';
+    document.getElementById('dish-modal-desc').textContent = (en && d.popis_en) ? d.popis_en : d.popis;
+    document.getElementById('dish-modal-alg-label').textContent = en ? 'Allergens' : 'Alergeny';
+    // prázdné alergeny = pokrm žádné nemá → celý blok skrýt
+    const al = en ? (d.alergeny_en || d.alergeny) : d.alergeny;
+    document.getElementById('dish-modal-alg').textContent = al || '';
+    document.getElementById('dish-modal-alg-wrap').style.display = al ? '' : 'none';
+    document.getElementById('dish-close').setAttribute('aria-label', en ? 'Close detail' : 'Zav\u0159\u00edt detail');
+    // obrázek: přednostně plné rozlišení (d.img), jinak miniatura ze slotu karty
+    const slot = this._dishCard && this._dishCard.querySelector('image-slot');
+    const im = document.getElementById('dish-modal-img');
+    const no = document.getElementById('dish-modal-noimg');
+    let src = d.img || '';
+    if (!src && slot && slot.hasAttribute('data-filled') && slot.shadowRoot) {
+      const si = slot.shadowRoot.querySelector('.frame img');
+      if (si && si.getAttribute('src')) src = si.src;
+    }
+    if (src) {
+      // nikdy nezvětšovat nad nativní rozlišení: menší zdroj se zobrazí 1:1 (contain), ne roztažený
+      im.style.imageRendering = 'auto';
+      im.style.transform = 'none';
+      im.style.filter = 'none';
+      im.onload = () => {
+        // vždy CONTAIN (celá fotka, žádný crop) a nikdy nezvětšovat nad nativní rozlišení
+        im.style.objectFit = 'contain';
+        im.style.width = 'auto';
+        im.style.height = 'auto';
+        im.style.maxWidth = Math.min(im.naturalWidth, im.parentElement.clientWidth) + 'px';
+        im.style.maxHeight = Math.min(im.naturalHeight, im.parentElement.clientHeight) + 'px';
+        im.width = im.naturalWidth; im.height = im.naturalHeight;
+      };
+      if (im.getAttribute('src') !== src) im.src = src; else if (im.complete) im.onload();
+      im.alt = (en && d.nazev_en) ? d.nazev_en : d.nazev;
+      im.style.display = 'block'; no.style.display = 'none';
+    } else { im.removeAttribute('src'); im.style.display = 'none'; no.style.display = 'block'; }
+  }
+  _openDish(id, card) {
+    const ov = document.getElementById('dish-overlay');
+    const dlg = document.getElementById('dish-modal');
+    this._dishId = id; this._dishCard = card; this._dishOpen = true;
+    this._fillDish();
+    // zámek scrollu pozadí (kompenzace šířky scrollbaru)
+    const sw = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden';
+    if (sw > 0) document.body.style.paddingRight = sw + 'px';
+    ov.style.display = 'flex';
+    dlg.scrollTop = 0;
+    const r = this._reduced;
+    ov.style.transition = 'none'; dlg.style.transition = 'none';
+    ov.style.opacity = '0';
+    dlg.style.opacity = '0';
+    dlg.style.transform = r ? 'none' : 'translateY(28px) scale(.95)';
+    void ov.offsetWidth;
+    ov.style.transition = 'opacity .2s ease';
+    dlg.style.transition = r ? 'opacity .2s ease' : 'transform .3s cubic-bezier(.34,1.4,.64,1),opacity .25s ease';
+    ov.style.opacity = '1'; dlg.style.opacity = '1'; dlg.style.transform = 'none';
+    clearTimeout(this._dishT);
+    clearTimeout(this._settleT);
+    // po dojetí animace shodit transition/transform/will-change — okno i fotka mimo GPU vrstvu, ostrý render
+    this._settleT = setTimeout(() => {
+      dlg.style.transition = 'none'; dlg.style.transform = 'none'; dlg.style.willChange = 'auto';
+      ov.style.willChange = 'auto';
+    }, r ? 220 : 340);
+    dlg.focus();
+  }
+  _closeDish() {
+    if (!this._dishOpen) return;
+    this._dishOpen = false;
+    const ov = document.getElementById('dish-overlay');
+    const dlg = document.getElementById('dish-modal');
+    const r = this._reduced;
+    clearTimeout(this._settleT);
+    ov.style.opacity = '0';
+    dlg.style.transition = r ? 'opacity .2s ease' : 'transform .22s cubic-bezier(.34,1.4,.64,1),opacity .2s ease';
+    dlg.style.opacity = '0';
+    if (!r) dlg.style.transform = 'translateY(28px) scale(.95)';
+    clearTimeout(this._dishT);
+    this._dishT = setTimeout(() => {
+      ov.style.display = 'none';
+      document.documentElement.style.overflow = '';
+      document.body.style.paddingRight = '';
+      if (this._dishCard) this._dishCard.focus();
+    }, r ? 200 : 230);
+  }
+  _setupBurger() {
+    const btn = document.querySelector('[data-burger]');
+    const panel = document.querySelector('[data-mobile-menu]');
+    const icon = document.querySelector('[data-burger-icon]');
+    if (!btn || !panel) return;
+    const HAMB = '<line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line>';
+    const CLOSE = '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>';
+    const setOpen = (open) => {
+      panel.style.display = open ? 'flex' : 'none';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (icon) icon.innerHTML = open ? CLOSE : HAMB;
+    };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); setOpen(panel.style.display === 'none'); });
+    panel.querySelectorAll('[data-mm-link]').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    this._onDocClickBurger = (e) => { if (!panel.contains(e.target) && !btn.contains(e.target)) setOpen(false); };
+    document.addEventListener('click', this._onDocClickBurger);
+    this._onKeyBurger = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', this._onKeyBurger);
+    this._onResizeBurger = () => { if (window.innerWidth > 760) setOpen(false); };
+    window.addEventListener('resize', this._onResizeBurger, { passive: true });
+  }
+  componentDidUpdate() { this._applyProps(); this._spy && this._spy(); }
+  _applyProps() {
+    const n = parseInt(this.props.gridCols ?? '3', 10) || 3;
+    if (window.innerWidth > 900) {
+      document.querySelectorAll('.daki-nab-grid').forEach(g => { g.style.gridTemplateColumns = 'repeat(' + n + ',1fr)'; });
+    }
+    const bar = document.getElementById('cat-bar');
+    if (bar) bar.style.position = (this.props.stickyPills ?? true) ? 'sticky' : 'static';
+  }
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    this._onDocClickBurger && document.removeEventListener('click', this._onDocClickBurger);
+    this._onKeyBurger && document.removeEventListener('keydown', this._onKeyBurger);
+    this._onResizeBurger && window.removeEventListener('resize', this._onResizeBurger);
+    this._rvIo && this._rvIo.disconnect();
+    clearTimeout(this._hlT);
+    clearTimeout(this._dishT);
+    clearTimeout(this._armT);
+    clearTimeout(this._settleT);
+    if (window.dakiOnLang) window.dakiOnLang = null;
+    if (this._dishEsc) document.removeEventListener('keydown', this._dishEsc, true);
+    if (this._dishClick) document.removeEventListener('click', this._dishClick);
+    if (this._dishKey) document.removeEventListener('keydown', this._dishKey);
+    document.documentElement.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
