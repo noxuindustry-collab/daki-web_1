@@ -18,14 +18,6 @@
 body{margin:0;background:#fef7e5;font-family:Montserrat,system-ui,sans-serif;color:#5c2517}
 a{color:#873924}a:hover{color:#a5523a}
 ::selection{background:#f0ce7a;color:#5c2517}
-@keyframes daki-marquee{to{transform:translateX(-50%)}}
-@keyframes daki-404-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes daki-bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(3deg)}}
-.daki-track{display:flex;width:max-content;animation:daki-marquee 30s linear infinite}
-.daki-track span{white-space:pre;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:.01em;text-transform:uppercase;color:transparent;-webkit-text-stroke:2px #e8d9b8}
-.daki-404-anim{animation:daki-404-in .6s cubic-bezier(.22,1,.36,1) both}
-.daki-404-duck{animation:daki-bob 3.2s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.daki-track{animation:none!important}.daki-404-anim{animation:none!important}.daki-404-duck{animation:none!important}}
 @media (min-width:761px){.daki-mobile-menu{display:none!important}}
 @media (max-width:760px){
   .daki-navlinks{display:none!important}
@@ -36,10 +28,8 @@ a{color:#873924}a:hover{color:#a5523a}
 @media (max-width:560px){
   .daki-navrow{padding:10px 14px!important;gap:10px!important}
   .daki-navrow>a>img{height:34px!important}
-  .daki-404-num{font-size:120px!important}
-  .daki-404-title{font-size:28px!important}
-  .daki-404-ctas{flex-direction:column!important;align-items:stretch!important}
-  .daki-footer-grid{flex-direction:column!important;gap:28px!important;padding:44px 18px 30px!important}
+  .daki-ck-wrap{padding:104px 18px 56px!important}
+  .daki-ck-title{font-size:32px!important}
 }
 </style>
 </helmet>
@@ -48,11 +38,11 @@ a{color:#873924}a:hover{color:#a5523a}
 
 <header data-screen-label="Navigace" style="position:fixed;top:0;left:0;right:0;z-index:100;background:#fef7e5;border-bottom:1px solid #f5e8c8;box-shadow:0 2px 12px rgba(92,37,23,.06)">
   <div class="daki-navrow" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:14px 24px">
-    <a href="Daki Web.dc.html" aria-label="Daki — domů" style="display:flex;flex:none"><img src="assets/logo-red.svg" alt="Daki" width="104" height="45" style="display:block;height:44px;width:auto"></a>
+    <a href="index.html" aria-label="Daki — domů" style="display:flex;flex:none"><img src="assets/logo-red.svg" alt="Daki" width="104" height="45" style="display:block;height:44px;width:auto"></a>
     <nav aria-label="Hlavní navigace" class="daki-navlinks" style="display:flex;gap:26px;font-size:14px;font-weight:600">
-      <a href="Daki Web.dc.html#o-nas" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
-      <a href="Daki Nabidka.dc.html" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
-      <a href="Daki Web.dc.html#kontakt" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+      <a href="index.html#o-nas" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+      <a href="nabidka.html" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
+      <a href="index.html#kontakt" style="text-decoration:none;color:#5c2517;padding:4px 0" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
     </nav>
     <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
       <div role="group" aria-label="Jazyk" class="daki-lang" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
@@ -60,16 +50,16 @@ a{color:#873924}a:hover{color:#a5523a}
         <button type="button" class="clickable" data-lang-btn="en" aria-pressed="false" style="border:0;font:inherit;font-weight:700;padding:6px 12px;color:#873924;cursor:pointer" style-hover="background:#f5e8c8">EN</button>
       </div>
       <a class="daki-cta-desktop" href="https://www.foodora.cz/restaurant/xbzm/daki-bistro-karvina" aria-label="Objednat na Foodora" style="display:inline-flex;align-items:center;padding:9px 18px;background:#d3155e;color:#fff;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.3px;text-decoration:none" style-hover="background:#b81252;color:#fff">foodora</a>
-      <a class="daki-cta-desktop" href="Daki Nabidka.dc.html" style="display:inline-flex;align-items:center;padding:9px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5" data-i18n="nav.ctamenu">MENU</a>
+      <a class="daki-cta-desktop" href="nabidka.html" style="display:inline-flex;align-items:center;padding:9px 22px;background:#873924;color:#fef7e5;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5" data-i18n="nav.ctamenu">MENU</a>
       <button type="button" class="daki-burger clickable" data-burger="" aria-label="Menu" aria-expanded="false" aria-controls="daki-mobile-menu" style="display:none;align-items:center;justify-content:center;flex:none;border:0;background:#fef7e5;color:#873924;cursor:pointer;padding:0">
         <svg data-burger-icon="" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
       </button>
     </div>
   </div>
   <div id="daki-mobile-menu" class="daki-mobile-menu" data-mobile-menu="" style="display:none;flex-direction:column;gap:4px;padding:6px 20px 20px;background:#fef7e5;border-top:1px solid #f5e8c8">
-    <a data-mm-link="" href="Daki Web.dc.html#o-nas" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
-    <a data-mm-link="" href="Daki Nabidka.dc.html" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
-    <a data-mm-link="" href="Daki Web.dc.html#kontakt" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
+    <a data-mm-link="" href="index.html#o-nas" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.about">O nás</a>
+    <a data-mm-link="" href="nabidka.html" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.menu">Nabídka</a>
+    <a data-mm-link="" href="index.html#kontakt" style="padding:13px 6px;font-size:16px;font-weight:700;color:#5c2517;text-decoration:none;border-bottom:1px solid #f5e8c8" style-hover="color:#a5523a" data-i18n="nav.contact">Kontakt</a>
     <div style="display:flex;align-items:center;gap:12px;padding-top:16px;flex-wrap:wrap">
       <div role="group" aria-label="Jazyk" style="display:flex;border:2px solid #873924;border-radius:999px;overflow:hidden;font-size:12px;font-weight:700">
         <button type="button" class="clickable" data-lang-btn="cs" aria-pressed="true" style="border:0;font:inherit;font-weight:700;padding:8px 16px;background:#873924;color:#fef7e5;cursor:pointer">CZ</button>
@@ -80,30 +70,58 @@ a{color:#873924}a:hover{color:#a5523a}
   </div>
 </header>
 
-<main id="obsah" data-screen-label="404" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:120px 24px 80px;box-sizing:border-box;text-align:center">
-  <div aria-hidden="true" style="position:absolute;top:96px;left:0;right:0;overflow:hidden;pointer-events:none">
-    <div class="daki-track"><span data-i18n="e404.m1">Jejda, jejda, jejda, jejda, jejda, jejda, jejda, jejda, </span><span data-i18n="e404.m1">Jejda, jejda, jejda, jejda, jejda, jejda, jejda, jejda, </span></div>
-  </div>
-  <div aria-hidden="true" style="position:absolute;bottom:24px;left:0;right:0;overflow:hidden;pointer-events:none">
-    <div class="daki-track" style="animation-direction:reverse"><span data-i18n="e404.m2">Tady nic není, tady nic není, tady nic není, tady nic není, </span><span data-i18n="e404.m2">Tady nic není, tady nic není, tady nic není, tady nic není, </span></div>
-  </div>
+<main id="obsah" data-screen-label="Zásady cookies" class="daki-ck-wrap" style="max-width:760px;margin:0 auto;padding:130px 24px 72px;box-sizing:border-box">
+  <p style="margin:0 0 6px;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#a5523a" data-i18n="ckp.kicker">Právní informace</p>
+  <h1 class="daki-ck-title" style="margin:0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(32px,5vw,46px);line-height:1.1;color:#873924" data-i18n="ckp.title">Zásady používání cookies</h1>
+  <p style="margin:14px 0 0;font-size:14px;color:#a5523a" data-i18n="ckp.updated">Poslední aktualizace: 22. července 2026</p>
 
-  <div class="daki-404-anim" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;max-width:640px">
-    
-    <div class="daki-404-num" aria-hidden="true" style="font-family: 'Cherry Bomb One',cursive; font-size: clamp(120px,22vw,200px); line-height: .95; color: #873924; text-shadow: 0px 0px 0px #f0ce7a">404</div>
-    <h1 class="daki-404-title" style="margin:8px 0 0;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:clamp(28px,4vw,40px);color:#5c2517" data-i18n="e404.title">Tahle stránka nám utekla <br>z kuchyně</h1>
-    <p style="margin:10px 0 0;font-size:17px;line-height:1.6;color:#7a4a38;max-width:460px" data-i18n="e404.body">Možná se schovala pod nudlemi, možná ji snědla kachna. Ale nebojte — to nejlepší z Daki je pořád tady.</p>
-    <div class="daki-404-ctas" style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;justify-content:center">
-      <a href="Daki Web.dc.html" style="display:inline-flex;align-items:center;padding:14px 30px;background:#873924;color:#fef7e5;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.4px;text-decoration:none" style-hover="background:#5c2517;color:#fef7e5" data-i18n="e404.home">Zpátky domů</a>
-      <a href="Daki Nabidka.dc.html" style="display:inline-flex;align-items:center;padding:14px 30px;border:2px solid #873924;color:#873924;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.4px;text-decoration:none;background:transparent" style-hover="background:#f5e8c8;color:#873924" data-i18n="e404.menu">Prohlédnout nabídku</a>
-    </div>
+  <div style="display:flex;flex-direction:column;gap:36px;margin-top:40px;font-size:16px;line-height:1.7">
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="ckp.h1">Co jsou cookies?</h2>
+      <p style="margin:0" data-i18n="ckp.p1">Cookies jsou malé textové soubory, které si váš prohlížeč ukládá při návštěvě webových stránek. Pomáhají nám zapamatovat si vaše volby (třeba jazyk) a pochopit, jak web používáte, abychom ho mohli zlepšovat. Nejsou to závitky — ty děláme lépe.</p>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="ckp.h2">Jaké cookies používáme?</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="ckp.t1h">Nezbytné cookies</strong>
+          <p style="margin:0;font-size:15px" data-i18n="ckp.t1b">Zajišťují základní fungování webu — zapamatování zvoleného jazyka (CZ/EN) a vaší volby ohledně cookies. Bez nich web nefunguje správně, proto je nelze vypnout.</p>
+        </div>
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="ckp.t2h">Analytické cookies</strong>
+          <p style="margin:0;font-size:15px" data-i18n="ckp.t2b">Pomáhají nám anonymně pochopit, které stránky a jídla vás zajímají nejvíc. Ukládáme je jen s vaším souhlasem („Přijmout vše“).</p>
+        </div>
+        <div style="background:#faf1da;border-radius:20px;padding:18px 22px">
+          <strong style="display:block;color:#873924;margin-bottom:4px" data-i18n="ckp.t3h">Cookies třetích stran</strong>
+          <p style="margin:0;font-size:15px" data-i18n="ckp.t3b">Odkazy na Foodoru, Google Maps a Instagram mohou po kliknutí nastavit vlastní cookies těchto služeb. Řídí se jejich zásadami, ne našimi.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="ckp.h3">Jak souhlas změnit?</h2>
+      <p style="margin:0 0 16px" data-i18n="ckp.p3">Svou volbu můžete kdykoli změnit — buď smazáním cookies v prohlížeči, nebo tlačítkem níže, které nastavení otevře znovu.</p>
+      <button type="button" class="clickable" data-ck-reset="" style="border:2px solid #873924;background:transparent;color:#873924;font:inherit;font-size:14px;font-weight:700;padding:11px 24px;border-radius:999px;cursor:pointer" style-hover="background:#f5e8c8" data-i18n="ckp.reset">Změnit nastavení cookies</button>
+    </section>
+    <section>
+      <h2 style="margin:0 0 10px;font-family:'Cherry Bomb One',cursive;font-weight:400;font-size:24px;color:#5c2517" data-i18n="ckp.h4">Kdo cookies spravuje?</h2><p style="margin:0" data-i18n="ckp.p4">Správcem je <strong>Noxu Industry s.r.o.</strong>, Fryštátská 151/15, Fryštát, 733 01 Karviná 1. S dotazy <br>k cookies a osobním údajům se na nás obraťte osobně v bistru nebo přes noxu.industry@gmail.com.</p>
+      
+    </section>
   </div>
 </main>
+
+<footer style="border-top:1px solid #f5e8c8;margin-top:24px">
+  <div style="text-align:center;font-size:12px;color:#a5523a;padding:16px 24px">© 2026 DAKI BISTRO · <a href="index.html" style="color:#a5523a" data-i18n="ckp.back">Zpět na hlavní stránku</a></div>
+</footer>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
     this._setupBurger();
+    const reset = document.querySelector('[data-ck-reset]');
+    if (reset) reset.addEventListener('click', () => {
+      // neodstraňujeme klíč — pošleme uživatele na landing s vynucenou lištou
+      location.href = 'index.html?cookies=show';
+    });
     window.dakiApplyLang && window.dakiApplyLang();
   }
   _setupBurger() {
