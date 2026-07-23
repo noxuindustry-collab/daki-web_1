@@ -85,7 +85,7 @@ article:hover .daki-price{background:#5c2517;transform:translateY(-2px)}
 </helmet>
 
 <div data-promo-backdrop="" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(92,37,23,.55);align-items:center;justify-content:center;padding:20px;box-sizing:border-box">
-  <div data-promo="" role="dialog" aria-modal="true" aria-labelledby="promo-title" style="position:relative;max-width:820px;max-height:calc(100vh - 40px);overflow-y:auto;width:100%;background:#fef7e5;border-radius:28px;box-shadow:0 24px 64px rgba(92,37,23,.4);padding:36px 32px 32px;box-sizing:border-box;text-align:center;overflow:hidden">
+  <div data-promo="" role="dialog" aria-modal="true" aria-labelledby="promo-title" style="position:relative;max-width:820px;max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;width:100%;background:#fef7e5;border-radius:28px;box-shadow:0 24px 64px rgba(92,37,23,.4);padding:36px 32px 32px;box-sizing:border-box;text-align:center">
     
     
     <button type="button" class="clickable" data-promo-close="" aria-label="Zavřít" style="position:absolute;top:14px;right:14px;width:36px;height:36px;border:0;border-radius:50%;background:#873924;color:#fef7e5;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="background:#5c2517">
@@ -432,9 +432,27 @@ article:hover .daki-price{background:#5c2517;transform:translateY(-2px)}
       else if (track.scrollLeft > W * 1.75) { jumping = true; track.scrollLeft -= W; jumping = false; }
     };
     track.addEventListener('scroll', normalize, { passive: true });
-    const step = () => track.clientWidth * 0.8;
-    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    // šipky: posun přesně o jednu kartu, zarovnaně (úzké viewporty centrují kartu)
+    const go = (dir) => {
+      const cs = Array.from(track.children);
+      const tRect = track.getBoundingClientRect();
+      const centerMode = cs[0] && cs[0].offsetWidth > track.clientWidth * 0.55;
+      const anchor = centerMode ? tRect.left + tRect.width / 2 : tRect.left;
+      let bestI = 0, bestD = Infinity;
+      cs.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const pos = centerMode ? r.left + r.width / 2 : r.left;
+        const d = Math.abs(pos - anchor);
+        if (d < bestD) { bestD = d; bestI = i; }
+      });
+      const target = cs[Math.min(cs.length - 1, Math.max(0, bestI + dir))];
+      if (!target) return;
+      const r = target.getBoundingClientRect();
+      const delta = centerMode ? (r.left + r.width / 2) - (tRect.left + tRect.width / 2) : r.left - tRect.left - 2;
+      track.scrollBy({ left: delta, behavior: 'smooth' });
+    };
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
   }
   _setupPromo() {
     const backdrop = document.querySelector('[data-promo-backdrop]');
