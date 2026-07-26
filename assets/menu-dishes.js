@@ -252,10 +252,10 @@ window.DAKI_DISHES = {
   "img": "assets/dishes/dish-h14.webp"
  },
  "dish-h15": {
-  "nazev": "Thit kho tau s kuřecím masem",
-  "nazev_en": "Thit Kho Tau with chicken",
-  "popis": "Kuřecí maso, vejce, karamelová omáčka, kokosová voda, jasmínová rýže.",
-  "popis_en": "Chicken, egg, caramel sauce, coconut water and jasmine rice.",
+  "nazev": "Pikantní kuřecí rýže",
+  "nazev_en": "Spicy chicken rice",
+  "popis": "Kuřecí stehno bez kůže, marináda citronová tráva-chilli, rýže.",
+  "popis_en": "Skinless chicken thigh, lemongrass-chilli marinade, rice.",
   "alergeny": "Vejce",
   "alergeny_en": "Egg",
   "cena": "169",
