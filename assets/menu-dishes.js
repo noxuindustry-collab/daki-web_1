@@ -1,6 +1,16 @@
 /* Daki — data pokrmů (z uploads/daki-nabidka-CZ-EN.csv). Klíč = id image-slotu karty.
    img = PNG bez pozadí (plné rozlišení) pro kartu i pop-up; chybí jen u Pho Xào. */
 window.DAKI_DISHES = {
+ "dish-h19": {
+  "nazev": "Wok játra na asijský způsob s rýží nebo hranolkami",
+  "nazev_en": "Wok-fried liver Asian style with rice or fries",
+  "popis": "Restovaná játra s paprikou, cibulí, česnekem a sezamem, podávaná s rýží nebo hranolkami a čerstvou zeleninou.",
+  "popis_en": "Stir-fried liver with peppers, onion, garlic and sesame, served with rice or fries and fresh vegetables.",
+  "alergeny": "Lepek",
+  "alergeny_en": "Gluten",
+  "cena": "169",
+  "img": "assets/dishes/dish-h19.webp"
+ },
  "dish-p1": {
   "nazev": "Smažené jarní závitky s masem",
   "nazev_en": "Fried spring rolls with meat",

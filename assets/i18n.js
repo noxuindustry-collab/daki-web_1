@@ -58,6 +58,8 @@
     "promo.visit": "I'll stop by",
     "akce.d5": "Bun Cha La Lot",
     "akce.d6": "Thit Kho Tau with pork",
+    "akce.d8": "Wok-fried liver Asian style",
+    "badge.new": "New",
     "akce.d7": "Spicy chicken rice",
     "promo.d1": "Fried rice",
     "promo.d2": "Rice noodles",
