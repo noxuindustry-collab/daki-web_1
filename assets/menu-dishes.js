@@ -28,7 +28,7 @@ window.DAKI_DISHES = {
   "popis_en": "Crispy fried spring rolls.",
   "alergeny": "Korýši, Vejce, ryby",
   "alergeny_en": "Crustaceans, Eggs, Fish",
-  "cena": "135",
+  "cena": "130",
   "img": "assets/dishes/dish-p2.webp"
  },
  "dish-p3": {
@@ -168,7 +168,7 @@ window.DAKI_DISHES = {
   "popis_en": "Rice noodles with fried spring rolls, vegetables and Vietnamese sauce.",
   "alergeny": "Vejce, Ryby",
   "alergeny_en": "Eggs, Fish",
-  "cena": "165",
+  "cena": "159",
   "img": "assets/dishes/dish-h5.webp"
  },
  "dish-h6": {
@@ -188,7 +188,7 @@ window.DAKI_DISHES = {
   "popis_en": "Rice noodles with vegan fried spring rolls, vegetables and vegan sauce.",
   "alergeny": "",
   "alergeny_en": "",
-  "cena": "155",
+  "cena": "159",
   "img": "assets/dishes/dish-h7.webp"
  },
  "dish-h8": {
