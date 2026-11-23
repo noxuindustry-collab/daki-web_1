@@ -60,6 +60,7 @@
     "akce.d6": "Thit Kho Tau with pork",
     "akce.d8": "Wok-fried liver Asian style",
     "badge.new": "New",
+    "akce.d9": "Char siu pork banh mi",
     "akce.d7": "Spicy chicken rice",
     "promo.d1": "Fried rice",
     "promo.d2": "Rice noodles",

@@ -1,6 +1,16 @@
 /* Daki — data pokrmů (z uploads/daki-nabidka-CZ-EN.csv). Klíč = id image-slotu karty.
    img = PNG bez pozadí (plné rozlišení) pro kartu i pop-up; chybí jen u Pho Xào. */
 window.DAKI_DISHES = {
+ "dish-h20": {
+  "nazev": "Bacharsiu vepřové banh mi",
+  "nazev_en": "Char siu pork banh mi",
+  "popis": "Vietnamská bageta s vepřovým masem xá xíu, paštikou, nakládanou zeleninou, okurkou a koriandrem.",
+  "popis_en": "Vietnamese baguette with char siu pork, pâté, pickled vegetables, cucumber and coriander.",
+  "alergeny": "Lepek",
+  "alergeny_en": "Gluten",
+  "cena": "120",
+  "img": "assets/dishes/dish-h20.webp"
+ },
  "dish-h19": {
   "nazev": "Wok játra na asijský způsob s rýží nebo hranolkami",
   "nazev_en": "Wok-fried liver Asian style with rice or fries",
